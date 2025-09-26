@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Live Weather App</h1>
+  <input [(ngModel)]="city" placeholder="Enter City" >
+  <button (click)="getWeather()">Get Weather</button>
+
+  <div *ngIf="loading$ | async" class="spinner-container">
+  <div class="spinner"></div>
+  </div>
+    <p *ngIf="error$ | async" class="error">{{ error$ | async }}</p>
+
+  <div *ngIf="weather$ | async as weather" >
+    <h2>{{weather.city}}</h2>
+    <p>{{weather.description}}</p>
+   <p>Temp: {{ weather.temperature }}°C</p>
+   <p>Humidity: {{ weather.humidity }}%</p>
+  </div>
+</div>
